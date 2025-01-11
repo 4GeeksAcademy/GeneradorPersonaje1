@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selección aleatoria</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"/>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Personaliza tu personaje</h1>
+        <form>
+          <div class="mb-3">
+            <label for="sexo" class="form-label">Sexo:</label>
+            <select class="form-select" id="sexo" name="sexo">
+              <option selected disabled>Selecciona una opción</option>
+              <option value="masculino">Masculino</option>
+              <option value="femenino">Femenino</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="pelo" class="form-label">Pelo:</label>
+            <select class="form-select" id="pelo" name="pelo">
+              <option selected disabled>Selecciona una opción</option>
+              <option value="rapado">Rapado</option>
+              <option value="corte militar">Corte militar</option>
+              <option value="mohicano">Mohicano</option>
+              <option value="trenzas africanas">Trenzas africanas</option>
+              <option value="pelo puntiagudo">Pelo puntiagudo</option>
+              <option value="melena">Melena</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="torso" class="form-label">Torso:</label>
+            <select class="form-select" id="torso" name="torso">
+              <option selected disabled>Selecciona una opción</option>
+              <option value="camiseta">Camiseta</option>
+              <option value="camisa">Camisa</option>
+              <option value="abrigo">Abrigo</option>
+              <option value="sudadera">Sudadera</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="piernas" class="form-label">Piernas:</label>
+            <select class="form-select" id="piernas" name="piernas">
+              <option selected disabled>Selecciona una opción</option>
+              <option value="short">Short</option>
+              <option value="vaquero">Vaquero</option>
+              <option value="pantalón pirata">Pantalón pirata</option>
+              <option value="chandal">Chandal</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="calzado" class="form-label">Calzado:</label>
+            <select class="form-select" id="calzado" name="calzado">
+              <option selected disabled>Selecciona una opción</option>
+              <option value="zapatos">Zapatos</option>
+              <option value="botas">Botas</option>
+              <option value="zapatillas">Zapatillas</option>
+              <option value="chanclas">Chanclas</option>
+            </select> 
+          </div>
+          <button type="submit" class="btn btn-primary m-2">Enviar</button>
+          
+        </form>
+        <button class="btn btn-secondary m-2" id="randomButton">Generar</button>
+        <p id="result"></p> 
+      </div>
+    <script>
+        document.getElementById("randomButton").addEventListener("click", function() {
+
+        // Obtener las opciones que hay en select
+    function seleccionarAleatorio(selectorId) {
+      const opcionesHabilitadas = Array.from(document.querySelectorAll(`#${selectorId} option`))
+        .filter(opcion => !opcion.disabled);
+      const opcionAleatoria = opcionesHabilitadas[Math.floor(Math.random() * opcionesHabilitadas.length)];
+      return opcionAleatoria.value;
+    }
+        // Selección aleatoria
+            const randomSexo = seleccionarAleatorio("sexo");
+            const randomPelo = seleccionarAleatorio("pelo");
+            const randomTorso = seleccionarAleatorio("torso");
+            const randomPiernas = seleccionarAleatorio("piernas");
+            const randomCalzado = seleccionarAleatorio("calzado");
+
+            document.getElementById("result").textContent = `Sexo: ${randomSexo}, Pelo: ${randomPelo}, Torso: ${randomTorso}, Piernas: ${randomPiernas}, Calzado: ${randomCalzado}`;
+        });
+    </script>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"
+  ></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"
+  ></script>
+</body>
+</html>
